@@ -3,6 +3,7 @@ const progress = document.querySelector("#progress");
 const routeState = document.querySelector("#route-state");
 const timeReadout = document.querySelector("#time-readout");
 const playButton = document.querySelector("#play");
+const foldButton = document.querySelector("#fold");
 const pauseButton = document.querySelector("#pause");
 const replayButton = document.querySelector("#replay");
 const speed = document.querySelector("#speed");
@@ -35,6 +36,12 @@ fuse.addEventListener("fuse-complete", () => {
 });
 
 playButton.addEventListener("click", () => animateRoute(fuse.progressValue === 1));
+foldButton.addEventListener("click", () => {
+  startedAt = performance.now();
+  routeState.textContent = "FOLDING";
+  animation?.kill();
+  animation = fuse.animateFold({ duration: 14 / Number(speed.value) });
+});
 replayButton.addEventListener("click", () => animateRoute(true));
 pauseButton.addEventListener("click", () => {
   if (animation) {

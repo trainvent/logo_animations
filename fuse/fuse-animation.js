@@ -23,6 +23,7 @@ fuseTemplate.innerHTML = `
     .active { fill: none; stroke: var(--fuse-active, #8b0000); stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
     .halo { fill: none; stroke: var(--fuse-active, #8b0000); stroke-width: 3; opacity: 0; }
     .ember { fill: var(--fuse-spark, #fff1dc); stroke: var(--fuse-active, #8b0000); stroke-width: 6; opacity: 0; }
+    .feed { fill: none; stroke: var(--fuse-active, #8b0000); stroke-width: 12; stroke-linecap: round; opacity: 0; }
   </style>
   <svg viewBox="0 0 900 900" role="img" aria-label="Fuse route animation">
     <path class="guide" d="M450 9.45 L831.5275 670.275 L68.4725 670.275 Z" />
@@ -31,6 +32,7 @@ fuseTemplate.innerHTML = `
     <path class="guide" d="M556.0899 388.749 L450 572.502 L343.9101 388.749 Z" />
     <path class="burned"></path>
     <path class="active"></path>
+    <path class="feed" d="M0 450 L450 450" />
     <circle class="halo" cx="450" cy="9.45" r="22" />
     <circle class="ember" cx="450" cy="9.45" r="8" />
   </svg>
@@ -46,6 +48,7 @@ class LeFuseAnimation extends HTMLElement {
     this.burnedPath = this.shadowRoot.querySelector(".burned");
     this.ember = this.shadowRoot.querySelector(".ember");
     this.halo = this.shadowRoot.querySelector(".halo");
+    this.feed = this.shadowRoot.querySelector(".feed");
     this.progressValue = 0;
   }
 
@@ -102,6 +105,24 @@ class LeFuseAnimation extends HTMLElement {
     }
     this.setProgress(target);
     return null;
+  }
+
+  animateFold(options = {}) {
+    const duration = options.duration ?? 1;
+    this.setProgress(0);
+    this.feed.style.strokeDasharray = 450;
+    this.feed.style.strokeDashoffset = 450;
+    this.feed.style.opacity = "1";
+    const state = { feed: 0, progress: 0 };
+    const timeline = window.gsap.timeline({
+      onComplete: () => {
+        this.feed.style.opacity = "0";
+        this.dispatchEvent(new Event("fuse-complete"));
+      },
+    });
+    timeline.to(state, { feed: 1, duration: duration * .22, ease: "power2.inOut", onUpdate: () => { this.feed.style.strokeDashoffset = 450 * (1 - state.feed); } });
+    timeline.to(state, { progress: 1, duration: duration * .78, ease: options.ease || "none", onUpdate: () => this.setProgress(state.progress) });
+    return timeline;
   }
 
   setColors(colors = {}) {

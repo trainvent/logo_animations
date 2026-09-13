@@ -3,53 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Le Logo | Motion Study</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./style.css" />
+    <title>Le Logo | Motion Studies</title>
+    <link rel="stylesheet" href="./home.css" />
   </head>
   <body>
-    <main class="motion-page">
-      <nav class="topbar">
-        <a class="brand" href="./">LE / <span>MOTION STUDY</span></a>
-        <a class="tool-link" href="./path-tool/">Edit path <span aria-hidden="true">↗</span></a>
-      </nav>
-
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">A continuous gesture</p>
-          <h1>The line<br /><em>remembers.</em></h1>
-          <p class="lede">A single route through 24 connected segments, recorded from the numbered path study.</p>
-        </div>
-        <div class="route-meta">
-          <span class="meta-label">LIVE ROUTE</span>
-          <span id="route-state">READY</span>
+    <main>
+      <nav><a href="./">LE / MOTION STUDIES</a><span><a href="./fuse/">FUSE</a><a href="./fold/">FOLD</a><a href="./path-tool/">PATH TOOL</a></span></nav>
+      <section>
+        <p>TRAINVENT / MOTION ARCHIVE</p>
+        <h1>Choose a<br /><em>gesture.</em></h1>
+        <div class="choices">
+          <a href="./fuse/"><strong>01</strong><span>Fuse route</span><b>↗</b></a>
+          <a href="./fold/"><strong>02</strong><span>Fold from line</span><b>↗</b></a>
         </div>
       </section>
-
-      <section class="stage" aria-label="Animated logo">
-        <div class="stage-header"><span>01 / 01</span><span id="segment-readout">24 SEGMENTS</span></div>
-        <le-fuse-animation id="logo" active-color="#8b0000" burned-color="#59635d" guide-color="#b9c5ba"></le-fuse-animation>
-        <div class="progress-track"><span id="progress"></span></div>
-      </section>
-
-      <section class="controls" aria-label="Animation controls">
-        <div class="control-copy"><span class="eyebrow">Playback</span><strong id="time-readout">00:00</strong></div>
-        <div class="button-row">
-          <button id="play" class="button button-primary" type="button"><span aria-hidden="true">▶</span> Play route</button>
-          <button id="pause" class="button" type="button"><span aria-hidden="true">Ⅱ</span> Pause</button>
-          <button id="replay" class="button" type="button"><span aria-hidden="true">↺</span> Replay</button>
-        </div>
-        <label class="speed-control" for="speed">Tempo <output id="speed-value">1.0×</output><input id="speed" type="range" min="0.5" max="2" step="0.25" value="1" /></label>
-        <label class="color-control" for="active-color">Fuse color <input id="active-color" type="color" value="#8b0000" /></label>
-        <label class="ember-toggle"><input id="show-ember" type="checkbox" /><span>Show spark</span></label>
-      </section>
-
-      <footer><span>Permanent route / 24 edges / one stroke</span><span class="mono">TRAINVENT / 2026</span></footer>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    <script src="./fuse-animation.js"></script>
-    <script src="./app.js"></script>
   </body>
 </html>

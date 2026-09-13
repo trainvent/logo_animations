@@ -28,12 +28,14 @@ The server process should exit with a terminated message. That is expected.
 
 ## Pages
 
-- **Animation:** [http://127.0.0.1:4173/](http://127.0.0.1:4173/) is the focused motion page.
+- **Fuse:** [http://127.0.0.1:4173/fuse/](http://127.0.0.1:4173/fuse/) is the primary motion page.
 - **Path tool:** [http://127.0.0.1:4173/path-tool/](http://127.0.0.1:4173/path-tool/) contains the numbered segment picker.
+- **Fold study:** [http://127.0.0.1:4173/fold/](http://127.0.0.1:4173/fold/) is the separate fixed-line logo-fold animation.
 
 ## Animation controls
 
 - **Play route** starts or replays the permanent route.
+- **Fold from line** feeds a horizontal line from the left before folding into the logo route.
 - **Pause** toggles playback.
 - **Replay** starts from the beginning.
 - **Tempo** changes the playback rate.
@@ -59,10 +61,11 @@ The isolated component lives in [fuse-animation.js](fuse-animation.js). It regis
 	fuse.setColors({ active: '#31c48d', burned: '#38413d', guide: '#9aa9a0', spark: '#fff4ce' });
 	fuse.setProgress(0.42); // bind this to a process value from 0 to 1
 	fuse.animateTo(1, { duration: 8 });
+	fuse.animateFold({ duration: 8 });
 </script>
 ```
 
-Supported attributes are `progress`, `show-ember`, `active-color`, `burned-color`, `guide-color`, and `spark-color`. The component exposes `setProgress(value)`, `animateTo(value, options)`, and `setColors(colors)`, and emits `fuse-progress` and `fuse-complete` events.
+Supported attributes are `progress`, `show-ember`, `active-color`, `burned-color`, `guide-color`, and `spark-color`. The component exposes `setProgress(value)`, `animateTo(value, options)`, `animateFold(options)`, and `setColors(colors)`, and emits `fuse-progress` and `fuse-complete` events.
 
 ## Route notes
 
