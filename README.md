@@ -26,23 +26,25 @@ lsof -ti :4173 | xargs -r kill
 
 The server process should exit with a terminated message. That is expected.
 
-## Controls
+## Pages
 
-- **Draw** starts or replays the route.
+- **Animation:** [http://127.0.0.1:4173/](http://127.0.0.1:4173/) is the focused motion page.
+- **Path tool:** [http://127.0.0.1:4173/path-tool/](http://127.0.0.1:4173/path-tool/) contains the numbered segment picker.
+
+## Animation controls
+
+- **Play route** starts or replays the permanent route.
 - **Pause** toggles playback.
-- **Reset** returns to the construction guides.
-- **Speed** changes the playback rate.
+- **Replay** starts from the beginning.
+- **Tempo** changes the playback rate.
 
-## Set the path on the canvas
+## Edit the path
 
-1. Press **Pick path segments**.
-2. Click the first visible segment, then click the next segment connected to the current endpoint.
-3. Continue through the logo. Each selected segment is highlighted and numbered in the order you picked it.
-4. Press **Draw** to animate the exact selected route.
+Open the [path tool](http://127.0.0.1:4173/path-tool/), press **Pick path segments**, and click the connected segments in order.
 
 The picker rejects disconnected segments and prevents selecting the same segment twice. Use **Undo** to remove the last choice or **Clear** to start over. This is deliberately discrete: crossings and junctions are chosen explicitly instead of inferred from a rough freehand trace.
 
-The current default animation is the 24-segment route captured from the numbered canvas sequence. Reloading restores that route; picking or clearing segments lets you create a different one.
+The root animation uses the permanent 24-segment route captured from the numbered canvas sequence. Changes made in the path tool are not automatically written to source; copy the resulting ordered route into `app.js` when a new path is confirmed.
 
 ## Route notes
 

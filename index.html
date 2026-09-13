@@ -3,80 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Le Logo | One Stroke</title>
+    <title>Le Logo | Motion Study</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <main class="stage">
-      <header class="masthead">
-        <p class="eyebrow">Le Logo / 01</p>
-        <h1>One stroke,<br /><em>many turns.</em></h1>
-        <p class="intro">A continuous pen route through the circle and its rotating triangles.</p>
-      </header>
+    <main class="motion-page">
+      <nav class="topbar">
+        <a class="brand" href="./">LE / <span>MOTION STUDY</span></a>
+        <a class="tool-link" href="./path-tool/">Edit path <span aria-hidden="true">↗</span></a>
+      </nav>
 
-      <section class="workspace" aria-label="Logo animation">
-        <div class="artboard">
-          <div class="artboard-label">ROUTE STUDY <span>900 × 900</span></div>
-          <svg id="logo" viewBox="0 0 900 900" role="img" aria-label="Animated one-stroke logo">
-            <circle class="guide" cx="450" cy="450" r="445" />
-            <path class="guide" d="M450 9.45 L831.5275 670.275 L68.4725 670.275 Z" />
-            <path class="guide" d="M548.3474 179.7927 L634.8327 670.275 L166.8199 499.9323 Z" />
-            <path class="guide" d="M570.641 306.2257 L514.1917 626.3653 L265.1673 417.409 Z" />
-            <path class="guide" d="M556.0899 388.749 L450 572.502 L343.9101 388.749 Z" />
-            <g id="edge-picker" aria-label="Clickable logo segments"></g>
-            <g id="edge-labels" aria-hidden="true"></g>
-
-            <path id="route" d="M450 9.45
-              A445 445 0 0 1 831.5275 670.275
-              A445 445 0 0 1 68.4725 670.275
-              A445 445 0 0 1 450 9.45
-              L548.3474 179.7927 L831.5275 670.275
-              L634.8327 670.275 L68.4725 670.275
-              L166.8199 499.9323 L514.1917 626.3653
-              L634.8327 670.275 L570.641 306.2257
-              L548.3474 179.7927 L265.1673 417.409
-              L450 572.502 L514.1917 626.3653
-              L556.0899 388.749 L343.9101 388.749
-              L450 572.502 L556.0899 388.749
-              L570.641 306.2257 L343.9101 388.749
-              L265.1673 417.409 L166.8199 499.9323 L450 9.45" />
-            <circle id="pen" cx="450" cy="9.45" r="12" />
-          </svg>
-          <div class="progress-line"><span id="progress"></span></div>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">A continuous gesture</p>
+          <h1>The line<br /><em>remembers.</em></h1>
+          <p class="lede">A single route through 24 connected segments, recorded from the numbered path study.</p>
         </div>
-
-        <aside class="controls">
-          <div>
-            <p class="eyebrow">Playback</p>
-            <h2>Watch the route resolve.</h2>
-          </div>
-          <div class="control-group">
-            <button id="draw" class="primary" type="button"><span class="icon">↗</span> Draw</button>
-            <button id="pause" class="secondary" type="button"><span class="icon">Ⅱ</span> Pause</button>
-            <button id="reset" class="secondary" type="button"><span class="icon">↺</span> Reset</button>
-          </div>
-          <div class="pick-tools">
-            <button id="pick" class="secondary" type="button"><span class="icon">+</span> Pick path segments</button>
-            <p id="pick-help">Click a segment, then continue from its endpoint. Numbers show your order.</p>
-            <div class="pick-actions">
-              <button id="undo-pick" class="secondary" type="button" disabled>Undo</button>
-              <button id="clear-picks" class="secondary" type="button" disabled>Clear</button>
-            </div>
-          </div>
-          <label class="speed-control" for="speed">Speed <output id="speed-value">1.0×</output>
-            <input id="speed" type="range" min="0.25" max="2" step="0.25" value="1" />
-          </label>
-          <dl class="stats">
-            <div><dt>Mode</dt><dd>continuous</dd></div>
-            <div><dt>Path</dt><dd>single stroke</dd></div>
-            <div><dt>Engine</dt><dd>GSAP</dd></div>
-          </dl>
-        </aside>
+        <div class="route-meta">
+          <span class="meta-label">LIVE ROUTE</span>
+          <span id="route-state">READY</span>
+        </div>
       </section>
-      <footer><span>Designed as an animation study</span><span class="mono">TRAINVENT / 2026</span></footer>
+
+      <section class="stage" aria-label="Animated logo">
+        <div class="stage-header"><span>01 / 01</span><span id="segment-readout">24 SEGMENTS</span></div>
+        <svg id="logo" viewBox="0 0 900 900" role="img" aria-label="The Le Logo drawing itself">
+          <circle class="guide" cx="450" cy="450" r="445" />
+          <path class="guide" d="M450 9.45 L831.5275 670.275 L68.4725 670.275 Z" />
+          <path class="guide" d="M548.3474 179.7927 L634.8327 670.275 L166.8199 499.9323 Z" />
+          <path class="guide" d="M570.641 306.2257 L514.1917 626.3653 L265.1673 417.409 Z" />
+          <path class="guide" d="M556.0899 388.749 L450 572.502 L343.9101 388.749 Z" />
+          <path id="route" />
+          <circle id="pen-halo" cx="450" cy="9.45" r="22" />
+          <circle id="pen" cx="450" cy="9.45" r="8" />
+        </svg>
+        <div class="progress-track"><span id="progress"></span></div>
+      </section>
+
+      <section class="controls" aria-label="Animation controls">
+        <div class="control-copy"><span class="eyebrow">Playback</span><strong id="time-readout">00:00</strong></div>
+        <div class="button-row">
+          <button id="play" class="button button-primary" type="button"><span aria-hidden="true">▶</span> Play route</button>
+          <button id="pause" class="button" type="button"><span aria-hidden="true">Ⅱ</span> Pause</button>
+          <button id="replay" class="button" type="button"><span aria-hidden="true">↺</span> Replay</button>
+        </div>
+        <label class="speed-control" for="speed">Tempo <output id="speed-value">1.0×</output><input id="speed" type="range" min="0.5" max="2" step="0.25" value="1" /></label>
+      </section>
+
+      <footer><span>Permanent route / 24 edges / one stroke</span><span class="mono">TRAINVENT / 2026</span></footer>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="./app.js"></script>
