@@ -46,6 +46,24 @@ The picker rejects disconnected segments and prevents selecting the same segment
 
 The root animation uses the permanent 24-segment route captured from the numbered canvas sequence. Changes made in the path tool are not automatically written to source; copy the resulting ordered route into `app.js` when a new path is confirmed.
 
+## Reuse the fuse
+
+The isolated component lives in [fuse-animation.js](fuse-animation.js). It registers `<le-fuse-animation>` and has no dependency on the page layout.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="./fuse-animation.js"></script>
+<le-fuse-animation id="process-fuse" show-ember></le-fuse-animation>
+<script>
+	const fuse = document.querySelector('#process-fuse');
+	fuse.setColors({ active: '#31c48d', burned: '#38413d', guide: '#9aa9a0', spark: '#fff4ce' });
+	fuse.setProgress(0.42); // bind this to a process value from 0 to 1
+	fuse.animateTo(1, { duration: 8 });
+</script>
+```
+
+Supported attributes are `progress`, `show-ember`, `active-color`, `burned-color`, `guide-color`, and `spark-color`. The component exposes `setProgress(value)`, `animateTo(value, options)`, and `setColors(colors)`, and emits `fuse-progress` and `fuse-complete` events.
+
 ## Route notes
 
 The orange `#route` path in `index.html` is an Euler circuit of the hand-drawn logo graph. The actual triangle contact points are treated as vertices, each of the 24 visible edges is traversed exactly once, and the circle uses SVG arcs rather than straight chords. `app.js` audits the route's undirected edge list and refuses to animate if an edge is accidentally added twice.

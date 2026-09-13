@@ -28,7 +28,7 @@ h1 em { color: var(--accent); font-style: normal; }
 .stage { position: relative; background: var(--panel); padding: 24px 5vw 18px; overflow: hidden; }
 .stage::after { content: "LE"; position: absolute; right: 2vw; bottom: -1.2em; color: rgba(50,124,117,.08); font-size: 27vw; font-weight: 700; letter-spacing: -.15em; pointer-events: none; }
 .stage-header { position: relative; z-index: 1; display: flex; justify-content: space-between; color: var(--muted); }
-#logo { position: relative; z-index: 1; display: block; width: min(100%, 770px); margin: 0 auto; overflow: visible; }
+.stage le-fuse-animation { position: relative; z-index: 1; display: block; width: min(100%, 770px); margin: 0 auto; }
 .guide { fill: none; stroke: var(--line); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; opacity: .32; }
 #burned-route { fill: none; stroke: #59635d; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; opacity: .5; }
 #route { fill: none; stroke: var(--accent); stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }

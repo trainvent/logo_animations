@@ -30,16 +30,7 @@
 
       <section class="stage" aria-label="Animated logo">
         <div class="stage-header"><span>01 / 01</span><span id="segment-readout">24 SEGMENTS</span></div>
-        <svg id="logo" viewBox="0 0 900 900" role="img" aria-label="The Le Logo drawing itself">
-          <path class="guide" d="M450 9.45 L831.5275 670.275 L68.4725 670.275 Z" />
-          <path class="guide" d="M548.3474 179.7927 L634.8327 670.275 L166.8199 499.9323 Z" />
-          <path class="guide" d="M570.641 306.2257 L514.1917 626.3653 L265.1673 417.409 Z" />
-          <path class="guide" d="M556.0899 388.749 L450 572.502 L343.9101 388.749 Z" />
-          <path id="burned-route" />
-          <path id="route" />
-          <circle id="pen-halo" cx="450" cy="9.45" r="22" />
-          <circle id="pen" cx="450" cy="9.45" r="8" />
-        </svg>
+        <le-fuse-animation id="logo" show-ember="" active-color="#dc5538" burned-color="#59635d" guide-color="#b9c5ba"></le-fuse-animation>
         <div class="progress-track"><span id="progress"></span></div>
       </section>
 
@@ -57,6 +48,7 @@
       <footer><span>Permanent route / 24 edges / one stroke</span><span class="mono">TRAINVENT / 2026</span></footer>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="./fuse-animation.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>
