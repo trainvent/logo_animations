@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" preserveAspectRatio="xMidYMid meet">
+  <circle cx="450.0000" cy="450.0000" r="445.0000" stroke="lightgrey" stroke-width="10" fill="none" />
+  <polygon points="450.0000,9.4500 831.5275,670.2750 68.4725,670.2750" stroke="lightgrey" fill="none" stroke-width="10" stroke-opacity="1.0" fill-opacity="0" />
+  <polygon points="548.3474,179.7927 634.8327,670.2750 166.8199,499.9323" stroke="lightgrey" fill="none" stroke-width="10" stroke-opacity="1" fill-opacity="0" />
+  <polygon points="570.6410,306.2257 514.1917,626.3653 265.1673,417.4090" stroke="lightgrey" fill="none" stroke-width="10" stroke-opacity="1" fill-opacity="0" />
+  <polygon points="556.0899,388.7490 450.0000,572.5020 343.9101,388.7490" stroke="lightgrey" fill="none" stroke-width="10" stroke-opacity="1" fill-opacity="0" />
+  <text x="10" y="20" font-size="14"></text>
+</svg>
