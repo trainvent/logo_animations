@@ -1,4 +1,5 @@
 const route = document.querySelector("#route");
+const burnedRoute = document.querySelector("#burned-route");
 const pen = document.querySelector("#pen");
 const penHalo = document.querySelector("#pen-halo");
 const progress = document.querySelector("#progress");
@@ -10,6 +11,7 @@ const pauseButton = document.querySelector("#pause");
 const replayButton = document.querySelector("#replay");
 const speed = document.querySelector("#speed");
 const speedValue = document.querySelector("#speed-value");
+const showEmber = document.querySelector("#show-ember");
 
 // Captured from the numbered path-tool sequence. Keep this route as the permanent source of truth.
 const permanentRoute = `M450 9.45
@@ -28,6 +30,7 @@ const permanentRoute = `M450 9.45
   L265.1673 417.409 L166.8199 499.9323 L450 9.45`;
 
 route.setAttribute("d", permanentRoute);
+burnedRoute.setAttribute("d", permanentRoute);
 const routeLength = route.getTotalLength();
 const duration = 14;
 
@@ -41,8 +44,9 @@ const animation = gsap.to(route, {
   ease: "none",
   paused: true,
   onStart: () => {
-    routeState.textContent = "DRAWING";
-    gsap.set([pen, penHalo], { opacity: 1 });
+    routeState.textContent = "BURNING";
+    gsap.set(pen, { opacity: showEmber.checked ? 1 : 0 });
+    gsap.set(penHalo, { opacity: showEmber.checked ? 1 : 0 });
   },
   onUpdate: () => {
     const progressValue = animation.progress();
@@ -76,7 +80,7 @@ playButton.addEventListener("click", () => {
 
 pauseButton.addEventListener("click", () => {
   animation.paused(!animation.paused());
-  routeState.textContent = animation.paused() ? "PAUSED" : "DRAWING";
+  routeState.textContent = animation.paused() ? "PAUSED" : "BURNING";
 });
 
 replayButton.addEventListener("click", () => {
@@ -87,4 +91,10 @@ speed.addEventListener("input", (event) => {
   const multiplier = Number(event.target.value);
   animation.timeScale(multiplier);
   speedValue.textContent = `${multiplier.toFixed(2)}×`;
+});
+
+showEmber.addEventListener("change", () => {
+  if (animation.isActive()) {
+    gsap.set([pen, penHalo], { opacity: showEmber.checked ? 1 : 0 });
+  }
 });

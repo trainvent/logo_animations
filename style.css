@@ -30,7 +30,8 @@ h1 em { color: var(--accent); font-style: normal; }
 .stage-header { position: relative; z-index: 1; display: flex; justify-content: space-between; color: var(--muted); }
 #logo { position: relative; z-index: 1; display: block; width: min(100%, 770px); margin: 0 auto; overflow: visible; }
 .guide { fill: none; stroke: var(--line); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; opacity: .32; }
-#route { fill: none; stroke: var(--accent); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+#burned-route { fill: none; stroke: #59635d; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; opacity: .5; }
+#route { fill: none; stroke: var(--accent); stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
 #pen-halo { fill: none; stroke: var(--accent); stroke-width: 3; opacity: 0; }
 #pen { fill: var(--panel); stroke: var(--accent); stroke-width: 6; opacity: 0; }
 .progress-track { position: relative; z-index: 1; height: 4px; background: var(--line); margin-top: 15px; }
@@ -46,6 +47,8 @@ h1 em { color: var(--accent); font-style: normal; }
 .speed-control { color: var(--muted); }
 .speed-control output { float: right; color: var(--accent); }
 input[type="range"] { display: block; width: 100%; margin-top: 16px; accent-color: var(--accent); }
+.ember-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font: 500 11px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.ember-toggle input { width: 15px; height: 15px; margin: 0; accent-color: var(--accent); }
 footer { margin-top: auto; padding-top: 48px; color: var(--muted); }
 .mono { font-family: "DM Mono", monospace; }
 @media (max-width: 800px) {
