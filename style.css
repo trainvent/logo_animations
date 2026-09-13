@@ -49,6 +49,8 @@ h1 em { color: var(--accent); font-style: normal; }
 input[type="range"] { display: block; width: 100%; margin-top: 16px; accent-color: var(--accent); }
 .ember-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font: 500 11px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
 .ember-toggle input { width: 15px; height: 15px; margin: 0; accent-color: var(--accent); }
+.color-control { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); font: 500 11px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.color-control input { width: 30px; height: 22px; padding: 2px; border: 1px solid var(--ink); background: transparent; cursor: pointer; }
 footer { margin-top: auto; padding-top: 48px; color: var(--muted); }
 .mono { font-family: "DM Mono", monospace; }
 @media (max-width: 800px) {

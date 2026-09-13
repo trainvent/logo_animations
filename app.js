@@ -8,6 +8,7 @@ const replayButton = document.querySelector("#replay");
 const speed = document.querySelector("#speed");
 const speedValue = document.querySelector("#speed-value");
 const showEmber = document.querySelector("#show-ember");
+const activeColor = document.querySelector("#active-color");
 let animation;
 let startedAt = 0;
 
@@ -50,6 +51,10 @@ speed.addEventListener("input", () => {
 showEmber.addEventListener("change", () => {
   if (showEmber.checked) fuse.setAttribute("show-ember", "");
   else fuse.removeAttribute("show-ember");
+});
+
+activeColor.addEventListener("input", () => {
+  fuse.setColors({ active: activeColor.value });
 });
 
 gsap.fromTo(".hero-copy, .route-meta", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .8, stagger: .12, ease: "power2.out" });

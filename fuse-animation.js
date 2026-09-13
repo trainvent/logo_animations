@@ -20,9 +20,9 @@ fuseTemplate.innerHTML = `
     svg { display: block; width: 100%; height: auto; overflow: visible; }
     .guide { fill: none; stroke: var(--fuse-guide, #b9c5ba); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; opacity: .32; }
     .burned { fill: none; stroke: var(--fuse-burned, #59635d); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; opacity: .5; }
-    .active { fill: none; stroke: var(--fuse-active, #dc5538); stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
-    .halo { fill: none; stroke: var(--fuse-active, #dc5538); stroke-width: 3; opacity: 0; }
-    .ember { fill: var(--fuse-spark, #fff1dc); stroke: var(--fuse-active, #dc5538); stroke-width: 6; opacity: 0; }
+    .active { fill: none; stroke: var(--fuse-active, #8b0000); stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
+    .halo { fill: none; stroke: var(--fuse-active, #8b0000); stroke-width: 3; opacity: 0; }
+    .ember { fill: var(--fuse-spark, #fff1dc); stroke: var(--fuse-active, #8b0000); stroke-width: 6; opacity: 0; }
   </style>
   <svg viewBox="0 0 900 900" role="img" aria-label="Fuse route animation">
     <path class="guide" d="M450 9.45 L831.5275 670.275 L68.4725 670.275 Z" />
