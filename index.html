@@ -26,6 +26,8 @@
             <path class="guide" d="M548.3474 179.7927 L634.8327 670.275 L166.8199 499.9323 Z" />
             <path class="guide" d="M570.641 306.2257 L514.1917 626.3653 L265.1673 417.409 Z" />
             <path class="guide" d="M556.0899 388.749 L450 572.502 L343.9101 388.749 Z" />
+            <g id="edge-picker" aria-label="Clickable logo segments"></g>
+            <g id="edge-labels" aria-hidden="true"></g>
 
             <path id="route" d="M450 9.45
               A445 445 0 0 1 831.5275 670.275
@@ -33,13 +35,13 @@
               A445 445 0 0 1 450 9.45
               L548.3474 179.7927 L831.5275 670.275
               L634.8327 670.275 L68.4725 670.275
-              L166.8199 499.9323 L634.8327 670.275
-              L514.1917 626.3653 L570.641 306.2257
+              L166.8199 499.9323 L514.1917 626.3653
+              L634.8327 670.275 L570.641 306.2257
               L548.3474 179.7927 L265.1673 417.409
-              L514.1917 626.3653 L450 572.502
-              L556.0899 388.749 L570.641 306.2257
-              L343.9101 388.749 L556.0899 388.749
-              L450 572.502 L343.9101 388.749
+              L450 572.502 L514.1917 626.3653
+              L556.0899 388.749 L343.9101 388.749
+              L450 572.502 L556.0899 388.749
+              L570.641 306.2257 L343.9101 388.749
               L265.1673 417.409 L166.8199 499.9323 L450 9.45" />
             <circle id="pen" cx="450" cy="9.45" r="12" />
           </svg>
@@ -55,6 +57,14 @@
             <button id="draw" class="primary" type="button"><span class="icon">↗</span> Draw</button>
             <button id="pause" class="secondary" type="button"><span class="icon">Ⅱ</span> Pause</button>
             <button id="reset" class="secondary" type="button"><span class="icon">↺</span> Reset</button>
+          </div>
+          <div class="pick-tools">
+            <button id="pick" class="secondary" type="button"><span class="icon">+</span> Pick path segments</button>
+            <p id="pick-help">Click a segment, then continue from its endpoint. Numbers show your order.</p>
+            <div class="pick-actions">
+              <button id="undo-pick" class="secondary" type="button" disabled>Undo</button>
+              <button id="clear-picks" class="secondary" type="button" disabled>Clear</button>
+            </div>
           </div>
           <label class="speed-control" for="speed">Speed <output id="speed-value">1.0×</output>
             <input id="speed" type="range" min="0.25" max="2" step="0.25" value="1" />
