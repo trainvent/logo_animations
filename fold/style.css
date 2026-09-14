@@ -15,10 +15,10 @@ h1 em { color: var(--accent); font-style: normal; }
 .fold-stage { background: var(--panel); padding: 24px 5vw 18px; overflow: hidden; }
 .stage-label { display: flex; justify-content: space-between; color: var(--muted); }
 #fold-canvas { display: block; width: min(100%, 850px); height: auto; margin: 0 auto; overflow: visible; }
-.line-shadow, #fixed-line, #line-pulse { fill: none; stroke-linecap: round; }
-.line-shadow { stroke: rgba(32,37,34,.16); stroke-width: 16; transform: translateY(7px); }
-#fixed-line { stroke: var(--line); stroke-width: 10; }
-#line-pulse { stroke: var(--accent); stroke-width: 10; stroke-dasharray: 380; stroke-dashoffset: 380; opacity: .9; }
+#logo-art { display: none; }
+#line-shadow, #line-pulse { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#line-shadow { stroke: rgba(32,37,34,.16); stroke-width: 16; transform: translateY(7px); }
+#line-pulse { stroke: var(--accent); stroke-width: 10; opacity: .9; }
 .logo-guide { fill: none; stroke: var(--line); stroke-width: 10; opacity: .28; stroke-linecap: round; stroke-linejoin: round; }
 #fold-route { fill: none; stroke: var(--accent); stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
 #fold-point { fill: var(--panel); stroke: var(--accent); stroke-width: 5; opacity: 0; }

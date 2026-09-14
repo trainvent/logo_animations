@@ -1,6 +1,6 @@
 # Fold study
 
-This is a separate animation experiment from the primary fuse page. Its horizontal line stays a fixed length while the smaller centered logo folds upward from the line.
+This is a separate animation experiment from the primary fuse page. A single horizontal line feeds from the left into a right-anchored logo, which rotates from a low held orientation into its final upright form as the route is drawn.
 
 Run the site from the repository root:
 

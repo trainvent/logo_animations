@@ -1,46 +1,66 @@
 const canvas = document.querySelector("#fold-canvas");
-const logoArt = document.querySelector("#logo-art");
-const logoFold = document.querySelector("#logo-fold");
 const route = document.querySelector("#fold-route");
 const linePulse = document.querySelector("#line-pulse");
-const foldPoint = document.querySelector("#fold-point");
+const lineShadow = document.querySelector("#line-shadow");
 const progress = document.querySelector("#progress");
 const state = document.querySelector("#state");
 const foldButton = document.querySelector("#fold");
 const resetButton = document.querySelector("#reset");
 const color = document.querySelector("#color");
 const routeLength = route.getTotalLength();
-const baseTransform = "translate(585 305) scale(.32)";
+const pointCount = 260;
+const logoScale = .32;
+const anchor = { x: 729, y: 520 };
+const lineLength = routeLength * logoScale;
+const lineStart = anchor.x - lineLength;
+const straightPoints = Array.from({ length: pointCount }, (_, index) => ({
+  x: lineStart + (lineLength * index) / (pointCount - 1),
+  y: anchor.y,
+}));
+const shapedPoints = Array.from({ length: pointCount }, (_, index) => {
+  const source = route.getPointAtLength(routeLength * (1 - index / (pointCount - 1)));
+  return {
+    x: anchor.x + (source.x - 450) * logoScale,
+    y: anchor.y - (source.y - 9.45) * logoScale,
+  };
+});
+const motion = { progress: 0 };
 
-route.style.strokeDasharray = routeLength;
-route.style.strokeDashoffset = routeLength;
-gsap.set(logoFold, { transformOrigin: "450px 900px", scaleY: 0 });
-gsap.set(logoArt, { opacity: 1 });
-gsap.set(foldPoint, { opacity: 0 });
+document.querySelector("#logo-art").remove();
+
+function pathFor(points) {
+  return points.map((point, index) => `${index ? "L" : "M"}${point.x} ${point.y}`).join(" ");
+}
+
+function updateMotion() {
+  const value = motion.progress;
+  const points = straightPoints.map((point, index) => {
+    const feedProgress = Math.max(0, Math.min(1, (value - (pointCount - 1 - index) / pointCount) * pointCount));
+    return {
+      x: point.x + (shapedPoints[index].x - point.x) * feedProgress,
+      y: point.y + (shapedPoints[index].y - point.y) * feedProgress,
+    };
+  });
+  const path = pathFor(points);
+  linePulse.setAttribute("d", path);
+  lineShadow.setAttribute("d", path);
+  progress.style.width = `${value * 100}%`;
+}
 
 function reset() {
-  gsap.killTweensOf([logoArt, route, linePulse, foldPoint]);
-  route.style.strokeDashoffset = routeLength;
-  linePulse.style.strokeDashoffset = 380;
-  logoArt.setAttribute("transform", baseTransform);
-  gsap.set(logoFold, { scaleY: 0 });
-  gsap.set(logoArt, { opacity: 1 });
-  gsap.set(foldPoint, { opacity: 0 });
-  progress.style.width = "0%";
+  gsap.killTweensOf(motion);
+  motion.progress = 0;
+  updateMotion();
   state.textContent = "READY";
 }
 
 function fold() {
   reset();
   state.textContent = "FOLDING";
-  gsap.timeline({ onComplete: () => { state.textContent = "COMPLETE"; gsap.set(foldPoint, { opacity: 0 }); } })
-    .to(linePulse, { strokeDashoffset: 0, duration: .65, ease: "power2.inOut" })
-    .to(foldPoint, { opacity: 1, duration: .12 }, "<.42")
-    .to(logoFold, { scaleY: 1, duration: 1.35, ease: "power3.out" })
-    .to(route, { strokeDashoffset: 0, duration: 5.5, ease: "none", onUpdate: () => { progress.style.width = `${(1 - Number(route.style.strokeDashoffset) / routeLength) * 100}%`; } }, "<.1")
-    .to(foldPoint, { scale: 1.25, opacity: 0, duration: .4 }, "-=.4");
+  gsap.to(motion, { progress: 1, duration: 6.2, ease: "none", onUpdate: updateMotion, onComplete: () => { state.textContent = "COMPLETE"; } });
 }
 
+reset();
 foldButton.addEventListener("click", fold);
 resetButton.addEventListener("click", reset);
 color.addEventListener("input", () => {

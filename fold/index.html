@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./style.css?v=7" />
   </head>
   <body>
     <main class="fold-page">
@@ -15,15 +15,14 @@
       <header>
         <p class="eyebrow">A fixed-length gesture</p>
         <h1>Fold<br /><em>upward.</em></h1>
-        <p class="lede">The line stays put. The logo gathers itself from its center and rises into form.</p>
+        <p class="lede">A flat strip enters from the left, then turns and rises into the logo at the right.</p>
       </header>
       <section class="fold-stage" aria-label="Logo folding from a horizontal line">
-        <div class="stage-label"><span>FIXED LINE</span><span id="state">READY</span></div>
-        <svg id="fold-canvas" viewBox="0 0 900 620" role="img" aria-label="A small logo folding upward from a fixed horizontal line">
-          <path class="line-shadow" d="M70 520 H830" />
-          <path id="fixed-line" d="M70 520 H830" />
-          <path id="line-pulse" d="M70 520 H729" />
-          <g id="logo-art" transform="translate(585 305) scale(.32)">
+        <div class="stage-label"><span>FEED LINE</span><span id="state">READY</span></div>
+        <svg id="fold-canvas" viewBox="0 0 900 620" role="img" aria-label="A horizontal line feeding a logo that folds upward on the right">
+          <path id="line-shadow" />
+          <path id="line-pulse" />
+          <g id="logo-art" class="route-source" transform="translate(729 520) scale(.32)">
             <g id="logo-fold">
               <path class="logo-guide" d="M450 9.45 L831.5275 670.275 L68.4725 670.275 Z" />
               <path class="logo-guide" d="M548.3474 179.7927 L634.8327 670.275 L166.8199 499.9323 Z" />
@@ -32,7 +31,6 @@
               <path id="fold-route" d="M450 9.45 L166.8199 499.9323 L265.1673 417.409 L450 572.502 L343.9101 388.749 L556.0899 388.749 L450 572.502 L514.1917 626.3653 L556.0899 388.749 L570.641 306.2257 L343.9101 388.749 L265.1673 417.409 L548.3474 179.7927 L570.641 306.2257 L634.8327 670.275 L514.1917 626.3653 L166.8199 499.9323 L68.4725 670.275 L634.8327 670.275 L831.5275 670.275 L548.3474 179.7927 L450 9.45 A445 445 0 0 0 68.4725 670.275 A445 445 0 0 0 831.5275 670.275 A445 445 0 0 0 450 9.45" />
             </g>
           </g>
-          <circle id="fold-point" cx="729" cy="520" r="9" />
         </svg>
         <div class="progress-track"><span id="progress"></span></div>
       </section>
