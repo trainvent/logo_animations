@@ -12,11 +12,28 @@ const pointCount = 260;
 const logoScale = .32;
 const anchor = { x: 729, y: 520 };
 const lineLength = routeLength * logoScale;
-const lineStart = anchor.x - lineLength;
-const straightPoints = Array.from({ length: pointCount }, (_, index) => ({
-  x: lineStart + (lineLength * index) / (pointCount - 1),
+const coilPointCount = 220;
+const straightPointCount = pointCount - coilPointCount + 1;
+const coilCenter = { x: 330, y: 290 };
+const coilRadius = { x: 260, y: 230 };
+const coilFeedStart = { x: coilCenter.x, y: anchor.y };
+const coilEndAngle = Math.atan2((coilFeedStart.y - coilCenter.y) / coilRadius.y, (coilFeedStart.x - coilCenter.x) / coilRadius.x);
+const coilTurns = 2.1;
+function spiralPoint(progress) {
+  const radius = .08 + (.92 * (1 - (1 - progress) ** 3));
+  const angle = coilEndAngle + (Math.PI * 2 * coilTurns * (1 - progress));
+  return {
+    x: coilCenter.x + (coilRadius.x * radius * Math.cos(angle)),
+    y: coilCenter.y + (coilRadius.y * radius * Math.sin(angle)),
+  };
+}
+
+const coilPoints = Array.from({ length: coilPointCount }, (_, index) => spiralPoint(index / (coilPointCount - 1)));
+const straightPoints = Array.from({ length: straightPointCount }, (_, index) => ({
+  x: coilFeedStart.x + ((anchor.x - coilFeedStart.x) * index) / (straightPointCount - 1),
   y: anchor.y,
 }));
+straightPoints.splice(0, 1, ...coilPoints);
 const shapedPoints = Array.from({ length: pointCount }, (_, index) => {
   const source = route.getPointAtLength(routeLength * (1 - index / (pointCount - 1)));
   return {
